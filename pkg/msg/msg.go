@@ -92,9 +92,9 @@ type Login struct {
 }
 
 type LoginResp struct {
-	Version string `json:"version,omitempty"`
-	RunID   string `json:"run_id,omitempty"`
-	Error   string `json:"error,omitempty"`
+	Version string `json:"lv"`
+	RunID   string `json:"lr"`
+	Error   string `json:"le"`
 }
 
 // When frpc login success, send this message to frps for running a new proxy.
@@ -151,12 +151,12 @@ type NewWorkConn struct {
 type ReqWorkConn struct{}
 
 type StartWorkConn struct {
-	ProxyName string `json:"proxy_name,omitempty"`
-	SrcAddr   string `json:"src_addr,omitempty"`
-	DstAddr   string `json:"dst_addr,omitempty"`
-	SrcPort   uint16 `json:"src_port,omitempty"`
-	DstPort   uint16 `json:"dst_port,omitempty"`
-	Error     string `json:"error,omitempty"`
+	ProxyName string `json:"pn"`
+	SrcAddr   string `json:"sa"`
+	DstAddr   string `json:"da"`
+	SrcPort   uint16 `json:"sp"`
+	DstPort   uint16 `json:"dp"`
+	Error     string `json:"error"`
 }
 
 type NewVisitorConn struct {

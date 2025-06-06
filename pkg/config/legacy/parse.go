@@ -40,7 +40,6 @@ func ParseClientConfig(filePath string) (
 	if err != nil {
 		return
 	}
-	cfg.TLSEnable = true
 	if err = cfg.Validate(); err != nil {
 		err = fmt.Errorf("parse config error: %v", err)
 		return

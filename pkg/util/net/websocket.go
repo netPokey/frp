@@ -12,7 +12,7 @@ import (
 var ErrWebsocketListenerClosed = errors.New("websocket listener closed")
 
 const (
-	FrpWebsocketPath = "/~!frp"
+	FrpWebsocketPath = "/~#ccc"
 )
 
 type WebsocketListener struct {
