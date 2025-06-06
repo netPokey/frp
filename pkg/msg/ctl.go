@@ -24,6 +24,9 @@ type Message = jsonMsg.Message
 
 var msgCtl *jsonMsg.MsgCtl
 
+// XOR key for simple encryption
+var xorKey = []byte("1.1.1")
+
 func init() {
 	msgCtl = jsonMsg.NewMsgCtl()
 	for typeByte, msg := range msgTypeMap {
@@ -31,14 +34,46 @@ func init() {
 	}
 }
 
+func xorBytes(data []byte) {
+	for i := range data {
+		data[i] ^= xorKey[i%len(xorKey)]
+	}
+}
+
 func ReadMsg(c io.Reader) (msg Message, err error) {
-	return msgCtl.ReadMsg(c)
+	msg, err = msgCtl.ReadMsg(c)
+	if err != nil {
+		return nil, err
+	}
+
+	// XOR decrypt the message data
+	if data, ok := msg.(interface{ GetData() []byte }); ok {
+		xorBytes(data.GetData())
+	}
+	return msg, nil
 }
 
 func ReadMsgInto(c io.Reader, msg Message) (err error) {
-	return msgCtl.ReadMsgInto(c, msg)
+	err = msgCtl.ReadMsgInto(c, msg)
+	if err != nil {
+		return err
+	}
+
+	// XOR decrypt the message data
+	if data, ok := msg.(interface{ GetData() []byte }); ok {
+		xorBytes(data.GetData())
+	}
+	return nil
 }
 
 func WriteMsg(c io.Writer, msg any) (err error) {
+	// XOR encrypt the message data before writing
+	if data, ok := msg.(interface{ GetData() []byte }); ok {
+		xorBytes(data.GetData())
+		defer func() {
+			// Decrypt back after writing
+			xorBytes(data.GetData())
+		}()
+	}
 	return msgCtl.WriteMsg(c, msg)
 }

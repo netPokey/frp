@@ -1,0 +1,4 @@
+2025-06-07 00:16:19.947 [I] [frps/root.go:105] frps uses config file: ./bin/frps.toml
+2025-06-07 00:16:20.005 [I] [server/service.go:237] frps tcp listen on 0.0.0.0:7100
+2025-06-07 00:16:20.005 [I] [frps/root.go:114] frps started successfully
+2025-06-07 00:16:20.005 [I] [server/service.go:351] dashboard listen on 0.0.0.0:7500
