@@ -74,27 +74,27 @@ type ClientSpec struct {
 
 // When frpc start, client send this message to login to server.
 type Login struct {
-	Version      string            `json:"version,omitempty"`
-	Hostname     string            `json:"hostname,omitempty"`
-	Os           string            `json:"os,omitempty"`
-	Arch         string            `json:"arch,omitempty"`
-	User         string            `json:"user,omitempty"`
-	PrivilegeKey string            `json:"privilege_key,omitempty"`
-	Timestamp    int64             `json:"timestamp,omitempty"`
-	RunID        string            `json:"run_id,omitempty"`
-	Metas        map[string]string `json:"metas,omitempty"`
+	Version      string            `json:"lv"`
+	Hostname     string            `json:"lh"`
+	Os           string            `json:"lo"`
+	Arch         string            `json:"la"`
+	User         string            `json:"lu"`
+	PrivilegeKey string            `json:"lp"`
+	Timestamp    int64             `json:"lt"`
+	RunID        string            `json:"lr"`
+	Metas        map[string]string `json:"lm"`
 
 	// Currently only effective for VirtualClient.
-	ClientSpec ClientSpec `json:"client_spec,omitempty"`
+	ClientSpec ClientSpec `json:"lcs"`
 
 	// Some global configures.
-	PoolCount int `json:"pool_count,omitempty"`
+	PoolCount int `json:"lpc"`
 }
 
 type LoginResp struct {
-	Version string `json:"version,omitempty"`
-	RunID   string `json:"run_id,omitempty"`
-	Error   string `json:"error,omitempty"`
+	Version string `json:"lrv"`
+	RunID   string `json:"lrri"`
+	Error   string `json:"lre"`
 }
 
 // When frpc login success, send this message to frps for running a new proxy.
