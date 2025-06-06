@@ -80,11 +80,13 @@ func (cfg *BaseVisitorConf) GetBaseConfig() *BaseVisitorConf {
 func (cfg *BaseVisitorConf) unmarshalFromIni(_ string, name string, _ *ini.Section) error {
 	// Custom decoration after basic unmarshal:
 	cfg.ProxyName = name
-
+	cfg.UseEncryption = true
+	cfg.UseCompression = true
 	// bind_addr
 	if cfg.BindAddr == "" {
 		cfg.BindAddr = "127.0.0.1"
 	}
+
 	return nil
 }
 

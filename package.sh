@@ -17,7 +17,7 @@ make -f ./Makefile.cross-compiles
 rm -rf ./release/packages
 mkdir -p ./release/packages
 
-os_all='linux windows darwin freebsd android'
+os_all='linux windows darwin freebsd'
 arch_all='386 amd64 arm arm64 mips64 mips64le mips mipsle riscv64 loong64'
 extra_all='_ hf'
 
@@ -30,33 +30,33 @@ for os in $os_all; do
             if [ "x${extra}" != x"_" ]; then
                 suffix="${os}_${arch}_${extra}"
             fi
-            frp_dir_name="frp_${frp_version}_${suffix}"
-            frp_path="./packages/frp_${frp_version}_${suffix}"
+            frp_dir_name="ccc_${frp_version}_${suffix}"
+            frp_path="./packages/ccc_${frp_version}_${suffix}"
 
             if [ "x${os}" = x"windows" ]; then
-                if [ ! -f "./frpc_${os}_${arch}.exe" ]; then
+                if [ ! -f "./cccc_${os}_${arch}.exe" ]; then
                     continue
                 fi
-                if [ ! -f "./frps_${os}_${arch}.exe" ]; then
+                if [ ! -f "./ssss_${os}_${arch}.exe" ]; then
                     continue
                 fi
                 mkdir ${frp_path}
-                mv ./frpc_${os}_${arch}.exe ${frp_path}/frpc.exe
-                mv ./frps_${os}_${arch}.exe ${frp_path}/frps.exe
+                mv ./cccc_${os}_${arch}.exe ${frp_path}/cccc.exe
+                mv ./ssss_${os}_${arch}.exe ${frp_path}/ssss.exe
             else
-                if [ ! -f "./frpc_${suffix}" ]; then
+                if [ ! -f "./cccc_${suffix}" ]; then
                     continue
                 fi
-                if [ ! -f "./frps_${suffix}" ]; then
+                if [ ! -f "./ssss_${suffix}" ]; then
                     continue
                 fi
                 mkdir ${frp_path}
-                mv ./frpc_${suffix} ${frp_path}/frpc
-                mv ./frps_${suffix} ${frp_path}/frps
+                mv ./cccc_${suffix} ${frp_path}/cccc
+                mv ./ssss_${suffix} ${frp_path}/ssss
             fi  
             cp ../LICENSE ${frp_path}
-            cp -f ../conf/frpc.toml ${frp_path}
-            cp -f ../conf/frps.toml ${frp_path}
+            cp -f ../conf/cccc.toml ${frp_path}
+            cp -f ../conf/ssss.toml ${frp_path}
 
             # packages
             cd ./packages

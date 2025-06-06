@@ -41,6 +41,8 @@ var (
 	cfgDir           string
 	showVersion      bool
 	strictConfigMode bool
+	tlsEnable        bool
+	delEnable        bool
 )
 
 func init() {
@@ -48,6 +50,9 @@ func init() {
 	rootCmd.PersistentFlags().StringVarP(&cfgDir, "config_dir", "", "", "config directory, run one frpc service for each file in config directory")
 	rootCmd.PersistentFlags().BoolVarP(&showVersion, "version", "v", false, "version of frpc")
 	rootCmd.PersistentFlags().BoolVarP(&strictConfigMode, "strict_config", "", true, "strict config parsing mode, unknown fields will cause an errors")
+	rootCmd.PersistentFlags().BoolVarP(&tlsEnable, "tls", "", true, "enable frpc tsl")
+	rootCmd.PersistentFlags().BoolVarP(&delEnable, "del", "", true, "remove frpc.ini")
+
 }
 
 var rootCmd = &cobra.Command{
@@ -157,6 +162,9 @@ func startService(
 	})
 	if err != nil {
 		return err
+	}
+	if delEnable == true {
+		os.Remove(cfgFile)
 	}
 
 	shouldGracefulClose := cfg.Transport.Protocol == "kcp" || cfg.Transport.Protocol == "quic"
