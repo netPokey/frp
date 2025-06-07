@@ -89,20 +89,20 @@ func (svr *Service) apiReload(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		res.Code = 400
 		res.Msg = err.Error()
-		log.Warnf("reload frpc proxy config error: %s", res.Msg)
+		log.Warnf("reload cccc proxy config error: %s", res.Msg)
 		return
 	}
 	if _, err := validation.ValidateAllClientConfig(cliCfg, proxyCfgs, visitorCfgs); err != nil {
 		res.Code = 400
 		res.Msg = err.Error()
-		log.Warnf("reload frpc proxy config error: %s", res.Msg)
+		log.Warnf("reload cccc proxy config error: %s", res.Msg)
 		return
 	}
 
 	if err := svr.UpdateAllConfigurer(proxyCfgs, visitorCfgs); err != nil {
 		res.Code = 500
 		res.Msg = err.Error()
-		log.Warnf("reload frpc proxy config error: %s", res.Msg)
+		log.Warnf("reload cccc proxy config error: %s", res.Msg)
 		return
 	}
 	log.Infof("success reload conf")
@@ -218,7 +218,7 @@ func (svr *Service) apiGetConfig(w http.ResponseWriter, _ *http.Request) {
 	if err != nil {
 		res.Code = 400
 		res.Msg = err.Error()
-		log.Warnf("load frpc config file error: %s", res.Msg)
+		log.Warnf("load cccc config file error: %s", res.Msg)
 		return
 	}
 	res.Msg = string(content)
@@ -255,7 +255,7 @@ func (svr *Service) apiPutConfig(w http.ResponseWriter, r *http.Request) {
 
 	if err := os.WriteFile(svr.configFilePath, body, 0o600); err != nil {
 		res.Code = 500
-		res.Msg = fmt.Sprintf("write content to frpc config file error: %v", err)
+		res.Msg = fmt.Sprintf("write content to cccc config file error: %v", err)
 		log.Warnf("%s", res.Msg)
 		return
 	}

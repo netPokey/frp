@@ -98,7 +98,7 @@ type ClientTransportConfig struct {
 	Protocol string `json:"protocol,omitempty"`
 	// The maximum amount of time a dial to server will wait for a connect to complete.
 	DialServerTimeout int64 `json:"dialServerTimeout,omitempty"`
-	// DialServerKeepAlive specifies the interval between keep-alive probes for an active network connection between frpc and frps.
+	// DialServerKeepAlive specifies the interval between keep-alive probes for an active network connection between cccc and frps.
 	// If negative, keep-alive probes are disabled.
 	DialServerKeepAlive int64 `json:"dialServerKeepalive,omitempty"`
 	// ConnectServerLocalIP specifies the address of the client bind when it connect to server.
@@ -159,7 +159,7 @@ type TLSClientConfig struct {
 	// client will load the supplied tls configuration.
 	// Since v0.50.0, the default value has been changed to true, and tls is enabled by default.
 	Enable *bool `json:"enable,omitempty"`
-	// If DisableCustomTLSFirstByte is set to false, frpc will establish a connection with frps using the
+	// If DisableCustomTLSFirstByte is set to false, cccc will establish a connection with cccs using the
 	// first custom byte when tls is enabled.
 	// Since v0.50.0, the default value has been changed to true, and the first custom byte is disabled by default.
 	DisableCustomTLSFirstByte *bool `json:"disableCustomTLSFirstByte,omitempty"`
@@ -174,7 +174,7 @@ func (c *TLSClientConfig) Complete() {
 
 type AuthClientConfig struct {
 	// Method specifies what authentication method to use to
-	// authenticate frpc with frps. If "token" is specified - token will be
+	// authenticate cccc with frps. If "token" is specified - token will be
 	// read into login message. If "oidc" is specified - OIDC (Open ID Connect)
 	// token will be issued using OIDC settings. By default, this value is "token".
 	Method AuthMethod `json:"method,omitempty"`

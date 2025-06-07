@@ -31,7 +31,7 @@ var _ = ginkgo.Describe("[Feature: Chaos]", func() {
 		remotePort = %d
 		`, serverPort, f.PortByName(framework.TCPEchoServerPort), remotePort))
 
-		// 1. start frps and frpc, expect request success
+		// 1. start cccs and frpc, expect request success
 		ps, _, err := f.RunFrps("-c", serverConfigPath)
 		framework.ExpectNoError(err)
 

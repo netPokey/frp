@@ -56,7 +56,7 @@ type ServerConfig struct {
 	// requests on one single port. If it's not - it will listen on this value for
 	// HTTP CONNECT requests.
 	TCPMuxHTTPConnectPort int `json:"tcpmuxHTTPConnectPort,omitempty"`
-	// If TCPMuxPassthrough is true, frps won't do any update on traffic.
+	// If TCPMuxPassthrough is true, cccs won't do any update on traffic.
 	TCPMuxPassthrough bool `json:"tcpmuxPassthrough,omitempty"`
 	// SubDomainHost specifies the domain that will be attached to sub-domains
 	// requested by the client when using Vhost proxying. For example, if this
@@ -158,7 +158,7 @@ type ServerTransportConfig struct {
 	// TCPMuxKeepaliveInterval specifies the keep alive interval for TCP stream multiplier.
 	// If TCPMux is true, heartbeat of application layer is unnecessary because it can only rely on heartbeat in TCPMux.
 	TCPMuxKeepaliveInterval int64 `json:"tcpMuxKeepaliveInterval,omitempty"`
-	// TCPKeepAlive specifies the interval between keep-alive probes for an active network connection between frpc and frps.
+	// TCPKeepAlive specifies the interval between keep-alive probes for an active network connection between cccc and frps.
 	// If negative, keep-alive probes are disabled.
 	TCPKeepAlive int64 `json:"tcpKeepalive,omitempty"`
 	// MaxPoolCount specifies the maximum pool size for each proxy. By default,

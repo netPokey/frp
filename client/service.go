@@ -76,14 +76,14 @@ type ServiceOptions struct {
 	// The Connector shields the underlying connection details, whether it is through TCP or QUIC connection,
 	// and regardless of whether multiplexing is used.
 	//
-	// If it is not set, the default frpc connector will be used.
+	// If it is not set, the default cccc connector will be used.
 	// By using a custom Connector, it can be used to implement a VirtualClient, which connects to frps
 	// through a pipe instead of a real physical connection.
 	ConnectorCreator func(context.Context, *v1.ClientCommonConfig) Connector
 
 	// HandleWorkConnCb is a callback function that is called when a new work connection is created.
 	//
-	// If it is not set, the default frpc implementation will be used.
+	// If it is not set, the default cccc implementation will be used.
 	HandleWorkConnCb func(*v1.ProxyBaseConfig, net.Conn, *msg.StartWorkConn) bool
 }
 
@@ -97,7 +97,7 @@ func setServiceOptionsDefault(options *ServiceOptions) {
 	}
 }
 
-// Service is the client service that connects to frps and provides proxy services.
+// Service is the client service that connects to cccs and provides proxy services.
 type Service struct {
 	ctlMu sync.RWMutex
 	// manager control connection with server
@@ -243,7 +243,7 @@ func (svr *Service) keepControllerWorking() {
 	), true, svr.ctx.Done())
 }
 
-// login creates a connection to frps and registers it self as a client
+// login creates a connection to cccs and registers it self as a client
 // conn: control connection
 // session: if it's not nil, using tcp mux
 func (svr *Service) login() (conn net.Conn, connector Connector, err error) {

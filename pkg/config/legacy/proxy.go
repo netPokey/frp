@@ -54,7 +54,7 @@ type ProxyConf interface {
 	// GetBaseConfig returns the BaseProxyConf for this config.
 	GetBaseConfig() *BaseProxyConf
 	// UnmarshalFromIni unmarshals a ini.Section into this config. This function
-	// will be called on the frpc side.
+	// will be called on the cccc side.
 	UnmarshalFromIni(string, string, *ini.Section) error
 }
 

@@ -117,7 +117,7 @@ func (sv *SUDPVisitor) worker(workConn net.Conn, firstPacket *msg.UDPPacket) {
 	wg.Add(2)
 	closeCh := make(chan struct{})
 
-	// udp service -> frpc -> frps -> frpc visitor -> user
+	// udp service -> cccc -> cccs -> cccc visitor -> user
 	workConnReaderFn := func(conn net.Conn) {
 		defer func() {
 			conn.Close()
@@ -131,7 +131,7 @@ func (sv *SUDPVisitor) worker(workConn net.Conn, firstPacket *msg.UDPPacket) {
 				errRet error
 			)
 
-			// frpc will send heartbeat in workConn to frpc visitor for keeping alive
+			// cccc will send heartbeat in workConn to cccc visitor for keeping alive
 			_ = conn.SetReadDeadline(time.Now().Add(60 * time.Second))
 			if rawMsg, errRet = msg.ReadMsg(conn); errRet != nil {
 				xl.Warnf("read from workconn for user udp conn error: %v", errRet)
@@ -155,7 +155,7 @@ func (sv *SUDPVisitor) worker(workConn net.Conn, firstPacket *msg.UDPPacket) {
 		}
 	}
 
-	// udp service <- frpc <- frps <- frpc visitor <- user
+	// udp service <- cccc <- cccs <- cccc visitor <- user
 	workConnSenderFn := func(conn net.Conn) {
 		defer func() {
 			conn.Close()

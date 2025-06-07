@@ -37,7 +37,7 @@ var _ = ginkgo.Describe("[Feature: Heartbeat]", func() {
 		remote_port = %d
 		`, serverPort, f.PortByName(framework.TCPEchoServerPort), remotePort)
 
-		// run frps and frpc
+		// run cccs and frpc
 		f.RunProcesses([]string{serverConf}, []string{clientConf})
 
 		framework.NewRequestExpect(f).Protocol("tcp").Port(remotePort).Ensure()

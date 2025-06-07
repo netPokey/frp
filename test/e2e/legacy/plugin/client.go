@@ -67,7 +67,7 @@ var _ = ginkgo.Describe("[Feature: Client-Plugins]", func() {
 			for _, test := range tests {
 				clientConf += getProxyConf(test.proxyName, test.portName, test.extraConfig) + "\n"
 			}
-			// run frps and frpc
+			// run cccs and frpc
 			f.RunProcesses([]string{serverConf}, []string{clientConf})
 
 			for _, test := range tests {

@@ -130,7 +130,7 @@ var _ = ginkgo.Describe("[Feature: ClientManage]", func() {
 
 		time.Sleep(3 * time.Second)
 
-		// frpc stopped so the port is not listened, expect error
+		// cccc stopped so the port is not listened, expect error
 		framework.NewRequestExpect(f).Port(testPort).ExpectError(true).Ensure()
 	})
 })

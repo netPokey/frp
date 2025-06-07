@@ -111,7 +111,7 @@ var _ = ginkgo.Describe("[Feature: Client-Server]", func() {
 	})
 
 	// wss is special, it needs to be tested separately.
-	// frps only supports ws, so there should be a proxy to terminate TLS before frps.
+	// cccs only supports ws, so there should be a proxy to terminate TLS before frps.
 	ginkgo.Describe("Protocol wss", func() {
 		wssPort := f.AllocPort()
 		configures := &generalTestConfigures{
@@ -122,7 +122,7 @@ var _ = ginkgo.Describe("[Feature: Client-Server]", func() {
 				transport.protocol = "wss"
 				log.level = "trace"
 			`, wssPort),
-			// Due to the fact that frps cannot directly accept wss connections, we use the https2http plugin of another frpc to terminate TLS.
+			// Due to the fact that cccs cannot directly accept wss connections, we use the https2http plugin of another cccc to terminate TLS.
 			client2: fmt.Sprintf(`
 				[[proxies]]
 				name = "wss2ws"

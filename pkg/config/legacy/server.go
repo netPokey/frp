@@ -70,7 +70,7 @@ type ServerCommonConf struct {
 	// requests on one single port. If it's not - it will listen on this value for
 	// HTTP CONNECT requests. By default, this value is 0.
 	TCPMuxHTTPConnectPort int `ini:"tcpmux_httpconnect_port" json:"tcpmux_httpconnect_port"`
-	// If TCPMuxPassthrough is true, frps won't do any update on traffic.
+	// If TCPMuxPassthrough is true, cccs won't do any update on traffic.
 	TCPMuxPassthrough bool `ini:"tcpmux_passthrough" json:"tcpmux_passthrough"`
 	// VhostHTTPTimeout specifies the response header timeout for the Vhost
 	// HTTP server, in seconds. By default, this value is 60.
@@ -142,7 +142,7 @@ type ServerCommonConf struct {
 	// TCPMuxKeepaliveInterval specifies the keep alive interval for TCP stream multiplier.
 	// If TCPMux is true, heartbeat of application layer is unnecessary because it can only rely on heartbeat in TCPMux.
 	TCPMuxKeepaliveInterval int64 `ini:"tcp_mux_keepalive_interval" json:"tcp_mux_keepalive_interval"`
-	// TCPKeepAlive specifies the interval between keep-alive probes for an active network connection between frpc and frps.
+	// TCPKeepAlive specifies the interval between keep-alive probes for an active network connection between cccc and frps.
 	// If negative, keep-alive probes are disabled.
 	TCPKeepAlive int64 `ini:"tcp_keepalive" json:"tcp_keepalive"`
 	// Custom404Page specifies a path to a custom 404 page to display. If this

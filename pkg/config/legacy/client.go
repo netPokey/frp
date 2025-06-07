@@ -44,7 +44,7 @@ type ClientCommonConf struct {
 	NatHoleSTUNServer string `ini:"nat_hole_stun_server" json:"nat_hole_stun_server"`
 	// The maximum amount of time a dial to server will wait for a connect to complete.
 	DialServerTimeout int64 `ini:"dial_server_timeout" json:"dial_server_timeout"`
-	// DialServerKeepAlive specifies the interval between keep-alive probes for an active network connection between frpc and frps.
+	// DialServerKeepAlive specifies the interval between keep-alive probes for an active network connection between cccc and frps.
 	// If negative, keep-alive probes are disabled.
 	DialServerKeepAlive int64 `ini:"dial_server_keepalive" json:"dial_server_keepalive"`
 	// ConnectServerLocalIP specifies the address of the client bind when it connect to server.
@@ -145,7 +145,7 @@ type ClientCommonConf struct {
 	// TLSServerName specifies the custom server name of tls certificate. By
 	// default, server name if same to ServerAddr.
 	TLSServerName string `ini:"tls_server_name" json:"tls_server_name"`
-	// If the disable_custom_tls_first_byte is set to false, frpc will establish a connection with frps using the
+	// If the disable_custom_tls_first_byte is set to false, cccc will establish a connection with cccs using the
 	// first custom byte when tls is enabled.
 	// Since v0.50.0, the default value has been changed to true, and the first custom byte is disabled by default.
 	DisableCustomTLSFirstByte bool `ini:"disable_custom_tls_first_byte" json:"disable_custom_tls_first_byte"`

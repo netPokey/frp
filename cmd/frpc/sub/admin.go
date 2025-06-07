@@ -37,7 +37,7 @@ func init() {
 		description string
 		handler     func(*v1.ClientCommonConfig) error
 	}{
-		{"reload", "Hot-Reload frpc configuration", ReloadHandler},
+		{"reload", "Hot-Reload cccc configuration", ReloadHandler},
 		{"status", "Overview of all proxies status", StatusHandler},
 		{"stop", "Stop the running cccc", StopHandler},
 	}

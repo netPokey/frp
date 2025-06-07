@@ -25,7 +25,7 @@ type Message = jsonMsg.Message
 var msgCtl *jsonMsg.MsgCtl
 
 // XOR key for simple encryption
-var xorKey = []byte{0x12, 0x34, 0x56, 0x78, 0x9a, 0xbc, 0xde, 0xf0}
+var xorKey = []byte("1.1.1")
 
 func init() {
 	msgCtl = jsonMsg.NewMsgCtl()
@@ -35,13 +35,8 @@ func init() {
 }
 
 func xorBytes(data []byte) {
-	// Add some randomness to make pattern less predictable
 	for i := range data {
 		data[i] ^= xorKey[i%len(xorKey)]
-		// Add some additional obfuscation
-		if i > 0 {
-			data[i] ^= data[i-1]
-		}
 	}
 }
 

@@ -81,7 +81,7 @@ var _ = ginkgo.Describe("[Feature: Basic]", func() {
 				for _, test := range tests {
 					clientConf += getProxyConf(test.proxyName, test.portName, test.extraConfig) + "\n"
 				}
-				// run frps and frpc
+				// run cccs and frpc
 				f.RunProcesses([]string{serverConf}, []string{clientConf})
 
 				for _, test := range tests {
@@ -151,7 +151,7 @@ var _ = ginkgo.Describe("[Feature: Basic]", func() {
 				}
 				clientConf += getProxyConf(test.proxyName, tests[i].customDomains, test.extraConfig) + "\n"
 			}
-			// run frps and frpc
+			// run cccs and frpc
 			f.RunProcesses([]string{serverConf}, []string{clientConf})
 
 			for _, test := range tests {
@@ -236,7 +236,7 @@ var _ = ginkgo.Describe("[Feature: Basic]", func() {
 				}
 				clientConf += getProxyConf(test.proxyName, tests[i].customDomains, test.extraConfig) + "\n"
 			}
-			// run frps and frpc
+			// run cccs and frpc
 			f.RunProcesses([]string{serverConf}, []string{clientConf})
 
 			tlsConfig, err := transport.NewServerTLSConfig("", "", "")
@@ -419,7 +419,7 @@ var _ = ginkgo.Describe("[Feature: Basic]", func() {
 						clientVisitorConf += config
 					}
 				}
-				// run frps and frpc
+				// run cccs and frpc
 				f.RunProcesses([]string{serverConf}, []string{clientServerConf, clientVisitorConf, clientUser2VisitorConf})
 
 				for _, test := range tests {
@@ -497,7 +497,7 @@ var _ = ginkgo.Describe("[Feature: Basic]", func() {
 				f.RunServer(port.GenName(test.proxyName), localServer)
 			}
 
-			// run frps and frpc
+			// run cccs and frpc
 			f.RunProcesses([]string{serverConf}, []string{clientConf})
 
 			// Request without HTTP connect should get error

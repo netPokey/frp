@@ -119,7 +119,7 @@ func (pxy *BaseProxy) Close() {
 }
 
 // GetWorkConnFromPool try to get a new work connections from pool
-// for quickly response, we immediately send the StartWorkConn message to frpc after take out one from pool
+// for quickly response, we immediately send the StartWorkConn message to cccc after take out one from pool
 func (pxy *BaseProxy) GetWorkConnFromPool(src, dst net.Addr) (workConn net.Conn, err error) {
 	xl := xlog.FromContextSafe(pxy.ctx)
 	// try all connections from the pool

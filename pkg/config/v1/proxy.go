@@ -207,10 +207,10 @@ type ProxyConfigurer interface {
 	Complete(namePrefix string)
 	GetBaseConfig() *ProxyBaseConfig
 	// MarshalToMsg marshals this config into a msg.NewProxy message. This
-	// function will be called on the frpc side.
+	// function will be called on the cccc side.
 	MarshalToMsg(*msg.NewProxy)
 	// UnmarshalFromMsg unmarshal a msg.NewProxy message into this config.
-	// This function will be called on the frps side.
+	// This function will be called on the cccs side.
 	UnmarshalFromMsg(*msg.NewProxy)
 }
 

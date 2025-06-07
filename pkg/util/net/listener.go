@@ -18,7 +18,6 @@ import (
 	"fmt"
 	"net"
 	"sync"
-	"time"
 
 	"github.com/fatedier/golib/errors"
 )
@@ -29,27 +28,15 @@ type InternalListener struct {
 	acceptCh chan net.Conn
 	closed   bool
 	mu       sync.Mutex
-	// Add some random data to make pattern less predictable
-	randData []byte
 }
 
 func NewInternalListener() *InternalListener {
-	// Generate random data
-	randData := make([]byte, 16)
-	for i := range randData {
-		randData[i] = byte(i * 0x11)
-	}
-	
 	return &InternalListener{
 		acceptCh: make(chan net.Conn, 128),
-		randData: randData,
 	}
 }
 
 func (l *InternalListener) Accept() (net.Conn, error) {
-	// Add some random delay
-	time.Sleep(time.Duration(l.randData[0]) * time.Millisecond)
-	
 	conn, ok := <-l.acceptCh
 	if !ok {
 		return nil, fmt.Errorf("listener closed")

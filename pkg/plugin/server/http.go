@@ -99,7 +99,7 @@ func (p *httpPlugin) do(ctx context.Context, r *Request, res *Response) error {
 		return err
 	}
 	req = req.WithContext(ctx)
-	req.Header.Set("X-Frp-Reqid", GetReqidFromContext(ctx))
+	req.Header.Set("X-ccc-Reqid", GetReqidFromContext(ctx))
 	req.Header.Set("Content-Type", "application/json")
 	resp, err := p.client.Do(req)
 	if err != nil {

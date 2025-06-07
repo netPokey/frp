@@ -64,7 +64,7 @@ var msgTypeMap = map[byte]any{
 var TypeNameNatHoleResp = reflect.TypeOf(&NatHoleResp{}).Elem().Name()
 
 type ClientSpec struct {
-	// Due to the support of VirtualClient, frps needs to know the client type in order to
+	// Due to the support of VirtualClient, cccs needs to know the client type in order to
 	// differentiate the processing logic.
 	// Optional values: ssh-tunnel
 	Type string `json:"type,omitempty"`
@@ -72,7 +72,7 @@ type ClientSpec struct {
 	AlwaysAuthPass bool `json:"always_auth_pass,omitempty"`
 }
 
-// When frpc start, client send this message to login to server.
+// When cccc start, client send this message to login to server.
 type Login struct {
 	Version      string            `json:"lv"`
 	Hostname     string            `json:"lh"`
@@ -97,7 +97,7 @@ type LoginResp struct {
 	Error   string `json:"lre"`
 }
 
-// When frpc login success, send this message to frps for running a new proxy.
+// When cccc login success, send this message to cccs for running a new proxy.
 type NewProxy struct {
 	ProxyName          string            `json:"proxy_name,omitempty"`
 	ProxyType          string            `json:"proxy_type,omitempty"`
