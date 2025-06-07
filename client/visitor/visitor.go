@@ -29,12 +29,12 @@ import (
 
 // Helper wraps some functions for visitor to use.
 type Helper interface {
-	// ConnectServer directly connects to the frp server.
+	// ConnectServer directly connects to the ccc server.
 	ConnectServer() (net.Conn, error)
 	// TransferConn transfers the connection to another visitor.
 	TransferConn(string, net.Conn) error
 	// MsgTransporter returns the message transporter that is used to send and receive messages
-	// to the frp server through the controller.
+	// to the ccc server through the controller.
 	MsgTransporter() transport.MessageTransporter
 	// VNetController returns the vnet controller that is used to manage the virtual network.
 	VNetController() *vnet.Controller

@@ -33,7 +33,7 @@ var verifyCmd = &cobra.Command{
 	Short: "Verify that the configures is valid",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if cfgFile == "" {
-			fmt.Println("frps: the configuration file is not specified")
+			fmt.Println("cccs: the configuration file is not specified")
 			return nil
 		}
 		svrCfg, _, err := config.LoadServerConfig(cfgFile, strictConfigMode)
@@ -50,7 +50,7 @@ var verifyCmd = &cobra.Command{
 			fmt.Println(err)
 			os.Exit(1)
 		}
-		fmt.Printf("frps: the configuration file %s syntax is ok\n", cfgFile)
+		fmt.Printf("cccs: the configuration file %s syntax is ok\n", cfgFile)
 		return nil
 	},
 }

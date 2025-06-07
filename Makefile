@@ -29,10 +29,10 @@ vet:
 	go vet ./...
 
 frps:
-	env CGO_ENABLED=0 go build -trimpath -ldflags "$(LDFLAGS)" -tags frps -o bin/frps ./cmd/frps
+	env CGO_ENABLED=0 go build -trimpath -ldflags "$(LDFLAGS)" -tags frps -o bin/cccs ./cmd/frps
 
 frpc:
-	env CGO_ENABLED=0 go build -trimpath -ldflags "$(LDFLAGS)" -tags frpc -o bin/frpc ./cmd/frpc
+	env CGO_ENABLED=0 go build -trimpath -ldflags "$(LDFLAGS)" -tags frpc -o bin/cccc ./cmd/frpc
 
 test: gotest
 
@@ -66,6 +66,6 @@ e2e-compatibility-last-frps:
 alltest: vet gotest e2e
 	
 clean:
-	rm -f ./bin/frpc
-	rm -f ./bin/frps
+	rm -f ./bin/cccc
+	rm -f ./bin/cccs
 	rm -rf ./lastversion

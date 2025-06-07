@@ -379,7 +379,7 @@ You may substitute `https2https` for the plugin, and point the `localAddr` to a 
   crtPath = "./server.crt"
   keyPath = "./server.key"
   hostHeaderRewrite = "127.0.0.1"
-  requestHeaders.set.x-from-where = "frp"
+  requestHeaders.set.x-from-where = "ccc"
   ```
 
 2. Visit `https://test.example.com`.
@@ -1009,7 +1009,7 @@ type = "http"
 localPort = 80
 customDomains = ["test.example.com"]
 hostHeaderRewrite = "dev.example.com"
-requestHeaders.set.x-from-where = "frp"
+requestHeaders.set.x-from-where = "ccc"
 responseHeaders.set.foo = "bar"
 ```
 
@@ -1244,7 +1244,7 @@ ssh -R :80:127.0.0.1:8080 v0@{frp address} -p 2200 tcp --proxy_name "test-tcp" -
 sets up a proxy on frps that forwards the local 8080 service to the port 9090.
 
 ```bash
-frp (via SSH) (Ctrl+C to quit)
+ccc (via SSH) (Ctrl+C to quit)
 
 User:
 ProxyName: test-tcp

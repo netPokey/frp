@@ -84,17 +84,17 @@ func (sv *SUDPVisitor) dispatcher() {
 		select {
 		case firstPacket = <-sv.sendCh:
 			if firstPacket == nil {
-				xl.Infof("frpc sudp visitor proxy is closed")
+				xl.Infof("cccc sudp visitor proxy is closed")
 				return
 			}
 		case <-sv.checkCloseCh:
-			xl.Infof("frpc sudp visitor proxy is closed")
+			xl.Infof("cccc sudp visitor proxy is closed")
 			return
 		}
 
 		visitorConn, err = sv.getNewVisitorConn()
 		if err != nil {
-			xl.Warnf("newVisitorConn to frps error: %v, try to reconnect", err)
+			xl.Warnf("newVisitorConn to cccs error: %v, try to reconnect", err)
 			continue
 		}
 
@@ -141,12 +141,12 @@ func (sv *SUDPVisitor) worker(workConn net.Conn, firstPacket *msg.UDPPacket) {
 			_ = conn.SetReadDeadline(time.Time{})
 			switch m := rawMsg.(type) {
 			case *msg.Ping:
-				xl.Debugf("frpc visitor get ping message from frpc")
+				xl.Debugf("cccc visitor get ping message from cccc")
 				continue
 			case *msg.UDPPacket:
 				if errRet := errors.PanicToError(func() {
 					sv.readCh <- m
-					xl.Tracef("frpc visitor get udp packet from workConn: %s", m.Content)
+					xl.Tracef("cccc visitor get udp packet from workConn: %s", m.Content)
 				}); errRet != nil {
 					xl.Infof("reader goroutine for udp work connection closed")
 					return
@@ -201,7 +201,7 @@ func (sv *SUDPVisitor) getNewVisitorConn() (net.Conn, error) {
 	xl := xlog.FromContextSafe(sv.ctx)
 	visitorConn, err := sv.helper.ConnectServer()
 	if err != nil {
-		return nil, fmt.Errorf("frpc connect frps error: %v", err)
+		return nil, fmt.Errorf("cccc connect cccs error: %v", err)
 	}
 
 	now := time.Now().Unix()
@@ -215,14 +215,14 @@ func (sv *SUDPVisitor) getNewVisitorConn() (net.Conn, error) {
 	}
 	err = msg.WriteMsg(visitorConn, newVisitorConnMsg)
 	if err != nil {
-		return nil, fmt.Errorf("frpc send newVisitorConnMsg to frps error: %v", err)
+		return nil, fmt.Errorf("cccc send newVisitorConnMsg to cccs error: %v", err)
 	}
 
 	var newVisitorConnRespMsg msg.NewVisitorConnResp
 	_ = visitorConn.SetReadDeadline(time.Now().Add(10 * time.Second))
 	err = msg.ReadMsgInto(visitorConn, &newVisitorConnRespMsg)
 	if err != nil {
-		return nil, fmt.Errorf("frpc read newVisitorConnRespMsg error: %v", err)
+		return nil, fmt.Errorf("cccc read newVisitorConnRespMsg error: %v", err)
 	}
 	_ = visitorConn.SetReadDeadline(time.Time{})
 

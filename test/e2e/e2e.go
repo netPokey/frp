@@ -40,7 +40,7 @@ func RunE2ETests(t *testing.T) {
 
 	log.Infof("starting e2e run %q on Ginkgo node %d of total %d",
 		framework.RunID, suiteConfig.ParallelProcess, suiteConfig.ParallelTotal)
-	ginkgo.RunSpecs(t, "frp e2e suite", suiteConfig, reporterConfig)
+	ginkgo.RunSpecs(t, "ccc e2e suite", suiteConfig, reporterConfig)
 }
 
 // setupSuite is the boilerplate that can be used to setup ginkgo test suites, on the SynchronizedBeforeSuite step.

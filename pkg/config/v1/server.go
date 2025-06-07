@@ -60,7 +60,7 @@ type ServerConfig struct {
 	TCPMuxPassthrough bool `json:"tcpmuxPassthrough,omitempty"`
 	// SubDomainHost specifies the domain that will be attached to sub-domains
 	// requested by the client when using Vhost proxying. For example, if this
-	// value is set to "frps.com" and the client requested the subdomain
+	// value is set to "cccs.com" and the client requested the subdomain
 	// "test", the resulting URL would be "test.frps.com".
 	SubDomainHost string `json:"subDomainHost,omitempty"`
 	// Custom404Page specifies a path to a custom 404 page to display. If this

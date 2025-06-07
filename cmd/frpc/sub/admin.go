@@ -39,7 +39,7 @@ func init() {
 	}{
 		{"reload", "Hot-Reload frpc configuration", ReloadHandler},
 		{"status", "Overview of all proxies status", StatusHandler},
-		{"stop", "Stop the running frpc", StopHandler},
+		{"stop", "Stop the running cccc", StopHandler},
 	}
 
 	for _, cmdConfig := range commands {

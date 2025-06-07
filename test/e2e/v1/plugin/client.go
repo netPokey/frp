@@ -380,7 +380,7 @@ var _ = ginkgo.Describe("[Feature: Client-Plugins]", func() {
 			[proxies.plugin]
 			type = "http2http"
 			localAddr = "127.0.0.1:%d"
-			requestHeaders.set.x-from-where = "frp"
+			requestHeaders.set.x-from-where = "ccc"
 			`, remotePort, localPort)
 
 			f.RunProcesses([]string{serverConf}, []string{clientConf})
@@ -398,7 +398,7 @@ var _ = ginkgo.Describe("[Feature: Client-Plugins]", func() {
 				RequestModify(func(r *request.Request) {
 					r.HTTP().HTTPHost("example.com")
 				}).
-				ExpectResp([]byte("frp")).
+				ExpectResp([]byte("ccc")).
 				Ensure()
 		})
 	})

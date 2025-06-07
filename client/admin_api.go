@@ -209,7 +209,7 @@ func (svr *Service) apiGetConfig(w http.ResponseWriter, _ *http.Request) {
 
 	if svr.configFilePath == "" {
 		res.Code = 400
-		res.Msg = "frpc has no config file path"
+		res.Msg = "cccc has no config file path"
 		log.Warnf("%s", res.Msg)
 		return
 	}

@@ -38,16 +38,16 @@ var (
 )
 
 func init() {
-	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "", "config file of frps")
-	rootCmd.PersistentFlags().BoolVarP(&showVersion, "version", "v", false, "version of frps")
+	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "", "config file of cccs")
+	rootCmd.PersistentFlags().BoolVarP(&showVersion, "version", "v", false, "version of cccs")
 	rootCmd.PersistentFlags().BoolVarP(&strictConfigMode, "strict_config", "", true, "strict config parsing mode, unknown fields will cause errors")
 
 	config.RegisterServerConfigFlags(rootCmd, &serverCfg)
 }
 
 var rootCmd = &cobra.Command{
-	Use:   "frps",
-	Short: "frps is the server of frp (https://github.com/fatedier/frp)",
+	Use:   "cccs",
+	Short: "cccs is the server of ",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if showVersion {
 			fmt.Println(version.Full())
@@ -102,16 +102,16 @@ func runServer(cfg *v1.ServerConfig) (err error) {
 	log.InitLogger(cfg.Log.To, cfg.Log.Level, int(cfg.Log.MaxDays), cfg.Log.DisablePrintColor)
 
 	if cfgFile != "" {
-		log.Infof("frps uses config file: %s", cfgFile)
+		log.Infof("cccs uses config file: %s", cfgFile)
 	} else {
-		log.Infof("frps uses command line arguments for config")
+		log.Infof("cccs uses command line arguments for config")
 	}
 
 	svr, err := server.NewService(cfg)
 	if err != nil {
 		return err
 	}
-	log.Infof("frps started successfully")
+	log.Infof("cccs started successfully")
 	svr.Run(context.Background())
 	return
 }

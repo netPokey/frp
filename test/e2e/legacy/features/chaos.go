@@ -12,7 +12,7 @@ import (
 var _ = ginkgo.Describe("[Feature: Chaos]", func() {
 	f := framework.NewDefaultFramework()
 
-	ginkgo.It("reconnect after frps restart", func() {
+	ginkgo.It("reconnect after cccs restart", func() {
 		serverPort := f.AllocPort()
 		serverConfigPath := f.GenerateConfigFile(fmt.Sprintf(`
 		[common]

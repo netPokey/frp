@@ -286,7 +286,7 @@ var _ = ginkgo.Describe("[Feature: HTTP]", func() {
 			RequestModify(func(r *request.Request) {
 				r.HTTP().HTTPHost("normal.example.com")
 			}).
-			ExpectResp([]byte("frp")). // local http server will write this X-From-Where header to response body
+			ExpectResp([]byte("ccc")). // local http server will write this X-From-Where header to response body
 			Ensure()
 	})
 

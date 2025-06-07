@@ -32,7 +32,7 @@ var _ = ginkgo.Describe("[Feature: Config]", func() {
 			remote_port = {{ .%s }}
 			`, "`", "`", framework.TCPEchoServerPort, portName)
 
-			f.SetEnvs([]string{"FRP_TOKEN=123"})
+			f.SetEnvs([]string{"ccc_TOKEN=123"})
 			f.RunProcesses([]string{serverConf}, []string{clientConf})
 
 			framework.NewRequestExpect(f).PortName(portName).Ensure()

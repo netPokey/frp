@@ -23,15 +23,15 @@ var TestContext TestContextType
 // test-specific flags. However, those settings then get added
 // regardless whether the test is actually in the test suite.
 func RegisterCommonFlags(flags *flag.FlagSet) {
-	flags.StringVar(&TestContext.FRPClientPath, "frpc-path", "../../bin/frpc", "The frp client binary to use.")
-	flags.StringVar(&TestContext.FRPServerPath, "frps-path", "../../bin/frps", "The frp server binary to use.")
+	flags.StringVar(&TestContext.FRPClientPath, "cccc-path", "../../bin/cccc", "The cccc client binary to use.")
+	flags.StringVar(&TestContext.FRPServerPath, "cccs-path", "../../bin/cccs", "The cccs server binary to use.")
 	flags.StringVar(&TestContext.LogLevel, "log-level", "debug", "Log level.")
 	flags.BoolVar(&TestContext.Debug, "debug", false, "Enable debug mode to print detail info.")
 }
 
 func ValidateTestContext(t *TestContextType) error {
 	if t.FRPClientPath == "" || t.FRPServerPath == "" {
-		return fmt.Errorf("frpc and frps binary path can't be empty")
+		return fmt.Errorf("cccc and cccs binary path can't be empty")
 	}
 	if _, err := os.Stat(t.FRPClientPath); err != nil {
 		return fmt.Errorf("load frpc-path error: %v", err)

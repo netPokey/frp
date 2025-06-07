@@ -66,7 +66,7 @@ ssh -R :80:127.0.0.1:8080 v0@{frp_address} -p 2200 tcp --proxy_name "test-tcp" -
 This sets up a proxy on frps that listens on port 9090 and proxies local service on port 8080.
 
 ```bash
-frp (via SSH) (Ctrl+C to quit)
+ccc (via SSH) (Ctrl+C to quit)
 
 User: 
 ProxyName: test-tcp

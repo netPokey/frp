@@ -208,9 +208,9 @@ var _ = ginkgo.Describe("[Feature: TCPMUX httpconnect]", func() {
 
 		framework.NewRequestExpect(f).
 			RequestModify(func(r *request.Request) {
-				r.Addr("normal.example.com").Proxy(proxyURLWithAuth("", "", vhostPort)).Body([]byte("frp"))
+				r.Addr("normal.example.com").Proxy(proxyURLWithAuth("", "", vhostPort)).Body([]byte("ccc"))
 			}).
-			ExpectResp([]byte("frp")).
+			ExpectResp([]byte("ccc")).
 			Ensure()
 		framework.ExpectNoError(respErr)
 		framework.ExpectEqualValues(connectRequestHost, "normal.example.com")

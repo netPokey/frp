@@ -217,7 +217,7 @@ locations = ["/", "/pic"]
 # route requests to this service if http basic auto user is abc
 # routeByHTTPUser = abc
 hostHeaderRewrite = "example.com"
-requestHeaders.set.x-from-where = "frp"
+requestHeaders.set.x-from-where = "ccc"
 responseHeaders.set.foo = "bar"
 healthCheck.type = "http"
 # frpc will send a GET http request '/status' to local http service
@@ -228,7 +228,7 @@ healthCheck.maxFailed = 3
 healthCheck.timeoutSeconds = 3
 # set health check headers
 healthCheck.httpHeaders=[
-    { name = "x-from-where", value = "frp" }
+    { name = "x-from-where", value = "ccc" }
 ]
 
 [[proxies]]
@@ -300,7 +300,7 @@ localAddr = "127.0.0.1:80"
 crtPath = "./server.crt"
 keyPath = "./server.key"
 hostHeaderRewrite = "127.0.0.1"
-requestHeaders.set.x-from-where = "frp"
+requestHeaders.set.x-from-where = "ccc"
 
 [[proxies]]
 name = "plugin_https2https"
@@ -312,7 +312,7 @@ localAddr = "127.0.0.1:443"
 crtPath = "./server.crt"
 keyPath = "./server.key"
 hostHeaderRewrite = "127.0.0.1"
-requestHeaders.set.x-from-where = "frp"
+requestHeaders.set.x-from-where = "ccc"
 
 [[proxies]]
 name = "plugin_http2https"
@@ -322,7 +322,7 @@ customDomains = ["test.yourdomain.com"]
 type = "http2https"
 localAddr = "127.0.0.1:443"
 hostHeaderRewrite = "127.0.0.1"
-requestHeaders.set.x-from-where = "frp"
+requestHeaders.set.x-from-where = "ccc"
 
 [[proxies]]
 name = "plugin_http2http"
@@ -332,7 +332,7 @@ remotePort = 6007
 type = "http2http"
 localAddr = "127.0.0.1:80"
 hostHeaderRewrite = "127.0.0.1"
-requestHeaders.set.x-from-where = "frp"
+requestHeaders.set.x-from-where = "ccc"
 
 [[proxies]]
 name = "plugin_tls2raw"

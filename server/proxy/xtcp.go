@@ -51,7 +51,7 @@ func (pxy *XTCPProxy) Run() (remoteAddr string, err error) {
 	xl := pxy.xl
 
 	if pxy.rc.NatHoleController == nil {
-		err = fmt.Errorf("xtcp is not supported in frps")
+		err = fmt.Errorf("xtcp is not supported in cccs")
 		return
 	}
 	allowUsers := pxy.cfg.AllowUsers

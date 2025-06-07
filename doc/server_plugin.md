@@ -1,6 +1,6 @@
 ### Server Plugin
 
-frp server plugin is aimed to extend frp's ability without modifying the Golang code.
+ccc server plugin is aimed to extend frp's ability without modifying the Golang code.
 
 An external server should run in a different process receiving RPC calls from frps.
 Before frps is doing some operations, it will send RPC requests to notify the external RPC server and act according to its response.

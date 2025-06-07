@@ -26,7 +26,7 @@ func (f *Framework) RunProcesses(serverTemplates []string, clientTemplates []str
 
 	currentServerProcesses := make([]*process.Process, 0, len(serverTemplates))
 	for i := range serverTemplates {
-		path := filepath.Join(f.TempDirectory, fmt.Sprintf("frp-e2e-server-%d", i))
+		path := filepath.Join(f.TempDirectory, fmt.Sprintf("ccc-e2e-server-%d", i))
 		err = os.WriteFile(path, []byte(outs[i]), 0o600)
 		ExpectNoError(err)
 
@@ -47,7 +47,7 @@ func (f *Framework) RunProcesses(serverTemplates []string, clientTemplates []str
 	currentClientProcesses := make([]*process.Process, 0, len(clientTemplates))
 	for i := range clientTemplates {
 		index := i + len(serverTemplates)
-		path := filepath.Join(f.TempDirectory, fmt.Sprintf("frp-e2e-client-%d", i))
+		path := filepath.Join(f.TempDirectory, fmt.Sprintf("ccc-e2e-client-%d", i))
 		err = os.WriteFile(path, []byte(outs[index]), 0o600)
 		ExpectNoError(err)
 
@@ -93,7 +93,7 @@ func (f *Framework) RunFrpc(args ...string) (*process.Process, string, error) {
 
 func (f *Framework) GenerateConfigFile(content string) string {
 	f.configFileIndex++
-	path := filepath.Join(f.TempDirectory, fmt.Sprintf("frp-e2e-config-%d", f.configFileIndex))
+	path := filepath.Join(f.TempDirectory, fmt.Sprintf("ccc-e2e-config-%d", f.configFileIndex))
 	err := os.WriteFile(path, []byte(content), 0o600)
 	ExpectNoError(err)
 	return path

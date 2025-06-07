@@ -89,7 +89,7 @@ func (f *Framework) BeforeEach() {
 
 	f.cleanupHandle = AddCleanupAction(f.AfterEach)
 
-	dir, err := os.MkdirTemp(os.TempDir(), "frp-e2e-test-*")
+	dir, err := os.MkdirTemp(os.TempDir(), "ccc-e2e-test-*")
 	ExpectNoError(err)
 	f.TempDirectory = dir
 
@@ -217,7 +217,7 @@ func (f *Framework) RenderTemplates(templates []string) (outs []string, ports ma
 	}
 
 	for _, t := range templates {
-		tmpl, err := template.New("frp-e2e").Parse(t)
+		tmpl, err := template.New("ccc-e2e").Parse(t)
 		if err != nil {
 			return nil, nil, err
 		}

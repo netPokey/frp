@@ -18,7 +18,7 @@ var _ = ginkgo.Describe("[Feature: Cmd]", func() {
 	f := framework.NewDefaultFramework()
 
 	ginkgo.Describe("Verify", func() {
-		ginkgo.It("frps valid", func() {
+		ginkgo.It("cccs valid", func() {
 			path := f.GenerateConfigFile(`
 			[common]
 			bind_addr = 0.0.0.0
@@ -28,7 +28,7 @@ var _ = ginkgo.Describe("[Feature: Cmd]", func() {
 			framework.ExpectNoError(err)
 			framework.ExpectTrue(strings.Contains(output, ConfigValidStr), "output: %s", output)
 		})
-		ginkgo.It("frps invalid", func() {
+		ginkgo.It("cccs invalid", func() {
 			path := f.GenerateConfigFile(`
 			[common]
 			bind_addr = 0.0.0.0
@@ -38,7 +38,7 @@ var _ = ginkgo.Describe("[Feature: Cmd]", func() {
 			framework.ExpectNoError(err)
 			framework.ExpectTrue(!strings.Contains(output, ConfigValidStr), "output: %s", output)
 		})
-		ginkgo.It("frpc valid", func() {
+		ginkgo.It("cccc valid", func() {
 			path := f.GenerateConfigFile(`
 			[common]
 			server_addr = 0.0.0.0
@@ -48,7 +48,7 @@ var _ = ginkgo.Describe("[Feature: Cmd]", func() {
 			framework.ExpectNoError(err)
 			framework.ExpectTrue(strings.Contains(output, ConfigValidStr), "output: %s", output)
 		})
-		ginkgo.It("frpc invalid", func() {
+		ginkgo.It("cccc invalid", func() {
 			path := f.GenerateConfigFile(`
 			[common]
 			server_addr = 0.0.0.0

@@ -41,18 +41,21 @@ var (
 	cfgDir           string
 	showVersion      bool
 	strictConfigMode bool
+	delEnable        bool
 )
 
 func init() {
-	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "./frpc.ini", "config file of frpc")
-	rootCmd.PersistentFlags().StringVarP(&cfgDir, "config_dir", "", "", "config directory, run one frpc service for each file in config directory")
-	rootCmd.PersistentFlags().BoolVarP(&showVersion, "version", "v", false, "version of frpc")
+	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "./cccc.ini", "config file of cccc")
+	rootCmd.PersistentFlags().StringVarP(&cfgDir, "config_dir", "", "", "config directory, run one cccc service for each file in config directory")
+	rootCmd.PersistentFlags().BoolVarP(&showVersion, "version", "v", false, "version of cccc")
 	rootCmd.PersistentFlags().BoolVarP(&strictConfigMode, "strict_config", "", true, "strict config parsing mode, unknown fields will cause an errors")
+	rootCmd.PersistentFlags().BoolVarP(&delEnable, "del", "", true, "remove cccc.ini")
+
 }
 
 var rootCmd = &cobra.Command{
-	Use:   "frpc",
-	Short: "frpc is the client of frp (https://github.com/fatedier/frp)",
+	Use:   "cccc",
+	Short: "cccc is the client of ",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if showVersion {
 			fmt.Println(version.Full())
@@ -88,7 +91,7 @@ func runMultipleClients(cfgDir string) error {
 			defer wg.Done()
 			err := runClient(path)
 			if err != nil {
-				fmt.Printf("frpc service error for config file [%s]\n", path)
+				fmt.Printf("cccc service error for config file [%s]\n", path)
 			}
 		}()
 		return nil
@@ -147,7 +150,7 @@ func startService(
 
 	if cfgFile != "" {
 		log.Infof("start frpc service for config file [%s]", cfgFile)
-		defer log.Infof("frpc service for config file [%s] stopped", cfgFile)
+		defer log.Infof("cccc service for config file [%s] stopped", cfgFile)
 	}
 	svr, err := client.NewService(client.ServiceOptions{
 		Common:         cfg,

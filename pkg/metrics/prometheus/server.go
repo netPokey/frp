@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	namespace       = "frp"
+	namespace       = "ccc"
 	serverSubsystem = "server"
 )
 
@@ -59,7 +59,7 @@ func newServerMetrics() *serverMetrics {
 			Namespace: namespace,
 			Subsystem: serverSubsystem,
 			Name:      "client_counts",
-			Help:      "The current client counts of frps",
+			Help:      "The current client counts of cccs",
 		}),
 		proxyCount: prometheus.NewGaugeVec(prometheus.GaugeOpts{
 			Namespace: namespace,

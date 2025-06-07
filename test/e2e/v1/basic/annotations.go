@@ -31,8 +31,8 @@ var _ = ginkgo.Describe("[Feature: Annotations]", func() {
 		localPort = {{ .%s }}
 		remotePort = %d
 		[proxies.annotations]
-		"frp.e2e.test/foo" = "value1"
-		"frp.e2e.test/bar" = "value2"
+		"ccc.e2e.test/foo" = "value1"
+		"ccc.e2e.test/bar" = "value2"
 		`, framework.TCPEchoServerPort, p1Port)
 
 		f.RunProcesses([]string{serverConf}, []string{clientConf})
@@ -48,7 +48,7 @@ var _ = ginkgo.Describe("[Feature: Annotations]", func() {
 		framework.ExpectNoError(err)
 
 		annotations := gjson.Get(string(content), "conf.annotations").Map()
-		framework.ExpectEqual("value1", annotations["frp.e2e.test/foo"].String())
-		framework.ExpectEqual("value2", annotations["frp.e2e.test/bar"].String())
+		framework.ExpectEqual("value1", annotations["ccc.e2e.test/foo"].String())
+		framework.ExpectEqual("value2", annotations["ccc.e2e.test/bar"].String())
 	})
 })
