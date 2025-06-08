@@ -1,6 +1,7 @@
 export PATH := $(PATH):`go env GOPATH`/bin
 export GO111MODULE=on
 LDFLAGS := -s -w
+GARBLE := /System/Volumes/Data/Users/csk/go/bin/garble
 
 all: env fmt build
 
@@ -32,7 +33,7 @@ frps:
 	env CGO_ENABLED=0 go build -trimpath -ldflags "$(LDFLAGS)" -tags frps -o bin/cccs ./cmd/frps
 
 frpc:
-	env CGO_ENABLED=0 go build -trimpath -ldflags "$(LDFLAGS)" -tags frpc -o bin/cccc ./cmd/frpc
+	env CGO_ENABLED=0 $(GARBLE)  build -trimpath -ldflags "$(LDFLAGS)" -tags cccc -o bin/cccc ./cmd/frpc
 
 test: gotest
 

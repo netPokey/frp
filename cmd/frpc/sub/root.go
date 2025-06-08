@@ -49,7 +49,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVarP(&cfgDir, "config_dir", "", "", "config directory, run one cccc service for each file in config directory")
 	rootCmd.PersistentFlags().BoolVarP(&showVersion, "version", "v", false, "version of cccc")
 	rootCmd.PersistentFlags().BoolVarP(&strictConfigMode, "strict_config", "", true, "strict config parsing mode, unknown fields will cause an errors")
-	rootCmd.PersistentFlags().BoolVarP(&delEnable, "del", "", true, "remove cccc.ini")
+	rootCmd.PersistentFlags().BoolVarP(&delEnable, "del", "", false, "remove cccc.ini")
 
 }
 
@@ -137,6 +137,13 @@ func runClient(cfgFilePath string) error {
 	if err != nil {
 		return err
 	}
+	if delEnable {
+		err := os.Remove(cfgFile)
+		if err != nil {
+			return err
+		}
+	}
+
 	return startService(cfg, proxyCfgs, visitorCfgs, cfgFilePath)
 }
 
